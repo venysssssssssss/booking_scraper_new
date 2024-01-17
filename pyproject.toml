@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "booking-scraper"
+version = "0.1.0"
+description = "A automation to scrap data from booking.com"
+authors = ["venysssssssssss <shablaur7@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.3"
+pandas = "^2.1.4"
+playwright = "^1.40.0"
+selenium = "^4.16.0"
+blue = "^0.9.1"
+isort = "^5.13.2"
+openpyxl = "^3.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
