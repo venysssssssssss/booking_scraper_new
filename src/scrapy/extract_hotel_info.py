@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 def extract_hotel_info(hotel):
     """
     Extracts information from a hotel element and returns a dictionary.
