@@ -8,8 +8,7 @@ from extract_hotel_info import extract_hotel_info
 from save_hotel_info import save_hotel_info
 
 def main(checkin_date, checkout_date, destination):
-    service = init_service()
-    driver = init_driver(service)
+    driver = init_driver()
     page_url = construct_url(checkin_date, checkout_date, destination)
     driver.get(page_url)
     click_button(driver)
@@ -18,3 +17,9 @@ def main(checkin_date, checkout_date, destination):
     hotels_list = [extract_hotel_info(hotel) for hotel in hotels]
     driver.quit()
     save_hotel_info(hotels_list)
+
+if __name__ == '__main__':
+    checkin_date = '2024-01-20'
+    checkout_date = '2024-01-24'
+    destination = 'Paris'
+    main(checkin_date, checkout_date, destination)
