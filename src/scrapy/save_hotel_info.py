@@ -2,6 +2,15 @@ import os
 import pandas as pd
 
 def save_hotel_info(hotels_list):
+    """
+    Save the hotel information to Excel and CSV files.
+
+    Args:
+        hotels_list (list): A list of dictionaries containing hotel information.
+
+    Returns:
+        None
+    """
     try:
         df = pd.DataFrame(hotels_list)
         out_dir = 'data/out'

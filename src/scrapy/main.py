@@ -8,6 +8,14 @@ from extract_hotel_info import extract_hotel_info
 from save_hotel_info import save_hotel_info
 
 def main(checkin_date, checkout_date, destination):
+    """
+    This function is the main entry point of the booking scraper program.
+    
+    Args:
+        checkin_date (str): The check-in date in the format 'YYYY-MM-DD'.
+        checkout_date (str): The check-out date in the format 'YYYY-MM-DD'.
+        destination (str): The destination for the hotel search.
+    """
     driver = init_driver()
     page_url = construct_url(checkin_date, checkout_date, destination)
     driver.get(page_url)

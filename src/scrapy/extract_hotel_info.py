@@ -1,6 +1,16 @@
 from selenium.webdriver.common.by import By
 
 def extract_hotel_info(hotel):
+    """
+    Extracts information from a hotel element and returns a dictionary.
+
+    Args:
+        hotel: The hotel element to extract information from.
+
+    Returns:
+        A dictionary containing the extracted information. The keys are 'hotel', 'price', 'score', 'avg review',
+        and 'reviews count'. The values are the corresponding extracted values from the hotel element.
+    """
     hotel_dict = {}
     try:
         title_element = hotel.find_element(By.XPATH, './/div[@data-testid="title"]')
