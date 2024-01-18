@@ -1,1 +1,18 @@
 venv
+# Ignore virtual environment
+.venv/
+
+# Ignore Poetry lock file
+poetry.lock
+
+# Ignore Poetry cache directory
+.poetry/
+
+# Ignore Poetry generated files
+__pypackages__/
+
+# Ignore Poetry build directory
+dist/
+
+# Ignore Poetry egg-info directory
+*.egg-info/
