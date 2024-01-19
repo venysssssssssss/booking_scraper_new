@@ -1,5 +1,7 @@
 import os
+
 import pandas as pd
+
 
 def save_hotel_info(hotels_list, filename, save_per_page):
     """
