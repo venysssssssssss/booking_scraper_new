@@ -6,31 +6,13 @@ from src.scrapy.extract_hotel_info import extract_hotel_info
 from src.scrapy.get_hotels import get_hotels
 from src.scrapy.save_hotel_info import save_hotel_info
 
-def scrape_pages(hotels_page):
+def scrape_pages(li_elements):
     all_hotels_list = []
     
     try:
-        # Get all elements with the XPath 'bodyconstraint-inner'
-        bodyconstraint_inner_elements = hotels_page.find_elements(By.XPATH, '//*[@id="bodyconstraint-inner"]/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/div[2]/nav/nav/div/div[2]/ol')
-        
-        for bodyconstraint_inner_element in bodyconstraint_inner_elements:
-            # Get the ol element containing the page numbers
-            WebDriverWait(bodyconstraint_inner_element, 30).until(
-                EC.presence_of_element_located(
-                    (By.XPATH, '//*[@id="bodyconstraint-inner"]/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/div[2]/nav/nav/div/div[2]/ol/li[1]/button')
-                )
-            )
-            # Get all the li elements within the ol element
-            li_elements = bodyconstraint_inner_element.find_elements(By.NAME, '1')
-            # Get the text of the last li element
-            for element in range(len(li_elements)):
-                print(li_elements[element].text)
-            last_page_number_text = li_elements[-1].text
-            if last_page_number_text:
-                last_page_number = int(last_page_number_text)
-            else:
-                print('Last page number not found')
-                return
+        # Extract the numbers from the li elements
+        last_page_numbers = [int(element.text) for element in li_elements]
+        last_page_number = max(last_page_numbers)
     except Exception as e:
         print(f'An error occurred: {e}')
         return
