@@ -1,5 +1,6 @@
-from selenium import webdriver
 from init_service import init_service
+from selenium import webdriver
+
 
 def init_driver():
     """
