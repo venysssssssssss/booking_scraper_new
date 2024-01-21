@@ -64,20 +64,23 @@ def scrape_pages(driver):
 
     for i in range(num_pages):
         print(f'Scraping page {i+1}...')
-        hotels = get_hotels(driver)
-        hotels_list = [extract_hotel_info(hotel) for hotel in hotels]
-        all_hotels_list.extend(hotels_list)
+        try:
+            hotels = get_hotels(driver)
+            hotels_list = [extract_hotel_info(hotel) for hotel in hotels]
+            all_hotels_list.extend(hotels_list)
 
-        if save_per_page:
-            save_hotel_info(hotels_list, f'hotels_page_{i+1}', save_per_page)
+            if save_per_page:
+                save_hotel_info(hotels_list, f'hotels_page_{i+1}', save_per_page)
 
-        if i < num_pages - 1:
-            next_page_button = driver.find_element(
-                By.XPATH,
-                '//*[@id="bodyconstraint-inner"]/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/div[2]/nav/nav/div/div[3]/button',
-            )
-            next_page_button.click()
-            time.sleep(15)
+            if i < num_pages - 1:
+                next_page_button = driver.find_element(
+                    By.XPATH,
+                    '//*[@id="bodyconstraint-inner"]/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/div[2]/nav/nav/div/div[3]/button',
+                )
+                next_page_button.click()
+                WebDriverWait(driver, 20).until(EC.staleness_of(hotels[0]))
+        except Exception as e:
+            print(f'An error occurred while scraping page {i+1}: {str(e)}')
 
     if not save_per_page:
         save_hotel_info(all_hotels_list, 'hotels_all_pages', save_per_page)
