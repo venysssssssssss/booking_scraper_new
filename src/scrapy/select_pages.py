@@ -86,6 +86,7 @@ def scrape_pages(driver):
                     lambda driver: driver.current_url != current_url
                 )
                 current_url = driver.current_url  # Update the current URL for the next check
+                print(get_hotels(driver))
 
         except Exception as e:
             print(f'An error occurred while scraping page {i+1}: {str(e)}')
