@@ -78,6 +78,8 @@ def scrape_pages(driver):
                     '//*[@id="bodyconstraint-inner"]/div[2]/div/div[2]/div[3]/div[2]/div[2]/div[4]/div[2]/nav/nav/div/div[3]/button',
                 )
                 next_page_button.click()
+                # Adicione uma espera explícita aqui
+                WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//div[@data-testid="property-card"]')))
                 WebDriverWait(driver, 20).until(EC.staleness_of(hotels[0]))
         except Exception as e:
             print(f'An error occurred while scraping page {i+1}: {str(e)}')
