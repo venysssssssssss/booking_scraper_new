@@ -14,10 +14,10 @@ def get_hotels(driver):
         A list of WebElement objects representing the hotels.
     """
     WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located(
-            (By.XPATH, '//div[@data-testid="property-card"]')
+        EC.presence_of_all_elements_located(
+            (By.XPATH, './/div[@data-testid="property-card"]')
         )
     )
     return driver.find_elements(
-        By.XPATH, '//div[@data-testid="property-card"]'
+        By.XPATH, './/div[@data-testid="property-card"]'
     )
