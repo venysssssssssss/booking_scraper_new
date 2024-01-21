@@ -1,3 +1,4 @@
+import time
 from selenium import webdriver
 from init_service import init_service
 from close_popup import close_popup
@@ -18,6 +19,7 @@ def main(checkin_date, checkout_date, destination):
     # Navigate to the URL
     driver.get(url)
 
+    
     # Close the popup window
     close_popup(driver)
 
@@ -28,7 +30,7 @@ def main(checkin_date, checkout_date, destination):
     driver.quit()
 
 if __name__ == "__main__":
-    checkin_date = '2024-01-24'
-    checkout_date = '2024-2-20'
-    destination = 'New York'
+    checkin_date = '2024-01-30'
+    checkout_date = '2024-2-30'
+    destination = 'Paris'
     main(checkin_date, checkout_date, destination)
