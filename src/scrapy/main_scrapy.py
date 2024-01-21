@@ -9,24 +9,28 @@ from save_hotel_info import save_hotel_info
 from select_pages import scrape_pages
 
 def main(checkin_date, checkout_date, destination):
-    # Initialize the WebDriver instance
+    """
+    Main function to scrape hotel information.
+
+    Args:
+        checkin_date (str): The check-in date in the format 'YYYY-MM-DD'.
+        checkout_date (str): The check-out date in the format 'YYYY-MM-DD'.
+        destination (str): The destination city.
+
+    Returns:
+        None
+    """
     service = init_service()
     driver = webdriver.Edge(service=service)
 
-    # Construct the URL for the search
     url = construct_url(checkin_date, checkout_date, destination)
 
-    # Navigate to the URL
     driver.get(url)
 
-    
-    # Close the popup window
     close_popup(driver)
 
-    # Scrape the pages
     scrape_pages(driver)
 
-    # Close the WebDriver instance
     driver.quit()
 
 if __name__ == "__main__":
