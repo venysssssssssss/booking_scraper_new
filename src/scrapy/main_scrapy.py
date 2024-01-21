@@ -6,7 +6,7 @@ from src.scrapy.get_hotels import get_hotels
 from src.scrapy.init_driver import init_driver
 from src.scrapy.init_service import init_service
 from src.scrapy.save_hotel_info import save_hotel_info
-from src.scrapy.select_pages_to_be_extracted import scrape_pages
+from src.scrapy.select_pages import scrape_pages
 
 
 def main(checkin_date, checkout_date, destination):
@@ -24,14 +24,10 @@ def main(checkin_date, checkout_date, destination):
     click_button(driver)
     close_popup(driver)
     scrape_pages(driver)
-    hotels = get_hotels(driver)
-    hotels_list = [extract_hotel_info(hotel) for hotel in hotels]
-    driver.quit()
-    save_hotel_info(hotels_list, 'all_hotels', True)
 
 
 if __name__ == '__main__':
-    checkin_date = '2024-01-20'
-    checkout_date = '2024-02-10'
+    checkin_date = '2024-01-26'
+    checkout_date = '2024-02-30'
     destination = 'Paris'
     main(checkin_date, checkout_date, destination)

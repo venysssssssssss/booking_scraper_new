@@ -15,7 +15,7 @@ def close_popup(driver):
 
     """
     try:
-        WebDriverWait(driver, 18).until(
+        WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(
                 (By.XPATH, '//button[@aria-label="Close"]')
             )
