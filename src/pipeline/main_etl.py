@@ -1,6 +1,6 @@
-from src.etl.extract import extract_from_excel
-from src.etl.load import load_to_excel
-from src.etl.transform import contact_dataframes
+from src.pipeline.extract import extract_from_excel
+from src.pipeline.load import load_to_excel
+from src.pipeline.transform import contact_dataframes
 
 if __name__ == '__main__':
     # Extract
@@ -22,8 +22,10 @@ if __name__ == '__main__':
     print(data_frame)
 
     # Load
-    load_to_excel(data_frame, 'data\\out\\output_etl_data', 'all_hotels_pages_in_1_file')
-    
+    load_to_excel(
+        data_frame, 'data\\out\\output_etl_data', 'all_hotels_pages_in_1_file'
+    )
+
     # Substring
     substring = 'all_hotels_pages_in_1_file'[4:9]
     print('Substring:', substring)
