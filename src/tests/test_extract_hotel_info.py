@@ -1,5 +1,7 @@
-from selenium.webdriver.common.by import By
 from unittest.mock import Mock
+
+from selenium.webdriver.common.by import By
+
 
 def test_extract_hotel_info():
     # Positive case 1: All elements present
@@ -8,14 +10,14 @@ def test_extract_hotel_info():
         price='$100',
         score='8.5',
         avg_review='Good',
-        reviews_count='100 reviews'
+        reviews_count='100 reviews',
     )
     expected_result_1 = {
         'hotel': 'Hotel A',
         'price': '$100',
         'score': '8.5',
         'avg review': 'Good',
-        'reviews count': '100'
+        'reviews count': '100',
     }
     assert extract_hotel_info(hotel_element_1) == expected_result_1
 
@@ -25,14 +27,14 @@ def test_extract_hotel_info():
         price=None,
         score='9.0',
         avg_review=None,
-        reviews_count='50 reviews'
+        reviews_count='50 reviews',
     )
     expected_result_2 = {
         'hotel': 'Hotel B',
         'price': None,
         'score': '9.0',
         'avg review': None,
-        'reviews count': '50'
+        'reviews count': '50',
     }
     assert extract_hotel_info(hotel_element_2) == expected_result_2
 
@@ -43,20 +45,17 @@ def test_extract_hotel_info():
         pass
 
     hotel_element_3 = create_hotel_element(
-        title=None,
-        price=None,
-        score=None,
-        avg_review=None,
-        reviews_count=None
+        title=None, price=None, score=None, avg_review=None, reviews_count=None
     )
     expected_result_3 = {
         'hotel': None,
         'price': None,
         'score': None,
         'avg review': None,
-        'reviews count': None
+        'reviews count': None,
     }
     assert extract_hotel_info(hotel_element_3) == expected_result_3
+
 
 def create_hotel_element(title, price, score, avg_review, reviews_count):
     # Create a mock hotel element with specified attributes
@@ -69,6 +68,7 @@ def create_hotel_element(title, price, score, avg_review, reviews_count):
     hotel_element.avg_review = avg_review
     hotel_element.reviews_count = reviews_count
     return hotel_element
+
 
 def find_element_mock(by, xpath):
     # Mock implementation of find_element method
@@ -84,6 +84,7 @@ def find_element_mock(by, xpath):
         return Mock()
     else:
         return None
+
 
 def get_attribute_mock(attribute):
     # Mock implementation of get_attribute method
