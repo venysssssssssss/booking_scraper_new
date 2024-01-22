@@ -1,7 +1,8 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-import time
 
 from src.scrapy.extract_hotel_info import extract_hotel_info
 from src.scrapy.get_hotels import get_hotels
@@ -9,6 +10,15 @@ from src.scrapy.save_hotel_info import save_hotel_info
 
 
 def scrape_pages(driver):
+    """
+    Scrape multiple pages of hotels.
+
+    Args:
+        driver: The Selenium WebDriver instance.
+
+    Returns:
+        None
+    """
     all_hotels_list = []
 
     wait = WebDriverWait(driver, 10)
@@ -72,7 +82,9 @@ def scrape_pages(driver):
             all_hotels_list.extend(hotels_list)
 
             if save_per_page:
-                save_hotel_info(hotels_list, f'hotels_page_{i+1}', save_per_page)
+                save_hotel_info(
+                    hotels_list, f'hotels_page_{i+1}', save_per_page
+                )
 
             if i < num_pages - 1:
                 next_page_button = driver.find_element(
@@ -85,7 +97,9 @@ def scrape_pages(driver):
                 WebDriverWait(driver, 20).until(
                     lambda driver: driver.current_url != current_url
                 )
-                current_url = driver.current_url  # Update the current URL for the next check
+                current_url = (
+                    driver.current_url
+                )  # Update the current URL for the next check
 
         except Exception as e:
             print(f'An error occurred while scraping page {i+1}: {str(e)}')
