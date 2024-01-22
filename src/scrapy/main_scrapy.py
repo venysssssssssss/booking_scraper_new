@@ -1,12 +1,14 @@
 import time
-from selenium import webdriver
-from init_service import init_service
+
 from close_popup import close_popup
 from construct_url import construct_url
 from extract_hotel_info import extract_hotel_info
 from get_hotels import get_hotels
+from init_service import init_service
 from save_hotel_info import save_hotel_info
 from select_pages import scrape_pages
+from selenium import webdriver
+
 
 def main(checkin_date, checkout_date, destination):
     """
@@ -23,7 +25,7 @@ def main(checkin_date, checkout_date, destination):
     service = init_service()
     driver = webdriver.Edge(service=service)
 
-    url = construct_url(checkin_date, checkout_date, destination)
+    url = construct_url(checkin_date, checkout_date, destination, adults, rooms, children, currency)
 
     driver.get(url)
 
@@ -33,8 +35,13 @@ def main(checkin_date, checkout_date, destination):
 
     driver.quit()
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     checkin_date = '2024-01-30'
     checkout_date = '2024-2-30'
     destination = 'Paris'
+    adults = 2
+    rooms = 2
+    children = 1
+    currency = 'EUR'
     main(checkin_date, checkout_date, destination)
