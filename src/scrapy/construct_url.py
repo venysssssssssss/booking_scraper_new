@@ -1,4 +1,6 @@
-def construct_url(checkin_date, checkout_date, destination, adults, rooms, children, currency):
+def construct_url(
+    checkin_date, checkout_date, destination, adults, rooms, children, currency
+):
     """
     Constructs a URL for booking.com search results based on the provided check-in date, check-out date, and destination.
 
