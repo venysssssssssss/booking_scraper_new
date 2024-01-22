@@ -17,14 +17,14 @@ def save_hotel_info(hotels_list, filename, save_per_page):
     """
     try:
         df = pd.DataFrame(hotels_list)
-        out_dir = 'data/out'
-        os.makedirs(out_dir, exist_ok=True)
+        out_dir_all_hotels = 'data\out\all_hotels_files'
+        out_dir_all_hotels_splitted = 'data\out\all_hotels_splitted_files'  
+        os.makedirs(out_dir_all_hotels, exist_ok=True)
         if save_per_page:
-            excel_file = os.path.join(out_dir, f'{filename}.xlsx')
-            csv_file = os.path.join(out_dir, f'{filename}.csv')
+            excel_file = os.path.join(out_dir_all_hotels_splitted, f'{filename}.xlsx')
         else:
-            excel_file = os.path.join(out_dir, 'all_hotels.xlsx')
-            csv_file = os.path.join(out_dir, 'all_hotels.csv')
+            excel_file = os.path.join(out_dir_all_hotels, 'all_hotels.xlsx')
+            csv_file = os.path.join(out_dir_all_hotels, 'all_hotels.csv')
         df.to_excel(excel_file, index=False)
         df.to_csv(csv_file, index=False)
         print(f'There are: {len(hotels_list)} hotels.')
