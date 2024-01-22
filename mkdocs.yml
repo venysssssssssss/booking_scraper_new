@@ -1,0 +1,31 @@
+site_name: 'Documentação booking_scraper'
+theme:
+  name: material
+  palette:
+    primary: 'blue'
+    accent: 'blue'
+    text: 'white'  # Cor do texto do menu
+  language: pt
+  logo:
+    icon: 'path/to/your/logo.png'
+  extra:
+    footer:
+      company: 'Your Company'
+      copyright: 'Copyright © 2024'
+  description: 'Sua descrição aqui.'
+  social:
+    image: 'path/to/your/social/image.jpg'
+  navbar:
+    background: '#333'  # Cor de fundo da barra de navegação
+    height: 50  # Altura da barra de navegação
+
+plugins:
+  - search
+  - awesome-pages
+
+nav:
+  - Home: index.md
+  - Documentation:
+    - 'Introduction': introduction.md
+    - 'Usage': usage.md
+  - Contact: contact.md

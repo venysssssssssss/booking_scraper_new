@@ -18,6 +18,9 @@ mkdocs-material = "^9.5.4"
 mkdocs-bootstrap = "^1.1.1"
 mkdocs-bootswatch = "^1.1"
 mkdocs-windmill = "^1.0.5"
+pymdown-extensions = "^10.7"
+pygments = "^2.17.2"
+mkdocs-awesome-pages-plugin = "^2.9.2"
 
 
 [build-system]
