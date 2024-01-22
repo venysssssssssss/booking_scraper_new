@@ -37,6 +37,13 @@ def close_popup(driver):
         if element_present and click_button:
             time.sleep(2)  # Aguarda por 2 segundos antes de clicar
             click_button.click()
-            wait.until_not(EC.presence_of_element_located((By.XPATH, '//*[@id="b2searchresultsPage"]/div[49]/div/div/div')))
+            wait.until_not(
+                EC.presence_of_element_located(
+                    (
+                        By.XPATH,
+                        '//*[@id="b2searchresultsPage"]/div[49]/div/div/div',
+                    )
+                )
+            )
     except Exception as e:
         print(f'An error occurred while closing the popup: {str(e)}')
