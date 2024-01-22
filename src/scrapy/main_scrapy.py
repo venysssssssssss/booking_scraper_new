@@ -25,7 +25,15 @@ def main(checkin_date, checkout_date, destination):
     service = init_service()
     driver = webdriver.Edge(service=service)
 
-    url = construct_url(checkin_date, checkout_date, destination, adults, rooms, children, currency)
+    url = construct_url(
+        checkin_date,
+        checkout_date,
+        destination,
+        adults,
+        rooms,
+        children,
+        currency,
+    )
 
     driver.get(url)
 
@@ -37,11 +45,11 @@ def main(checkin_date, checkout_date, destination):
 
 
 if __name__ == '__main__':
-    checkin_date = '2024-01-30'
+    checkin_date = '2024-02-15'
     checkout_date = '2024-2-30'
-    destination = 'Paris'
-    adults = 2
-    rooms = 2
-    children = 1
-    currency = 'EUR'
+    destination = 'Rio de Janeiro'
+    adults = 1
+    rooms = 1
+    children = 0
+    currency = 'USD'
     main(checkin_date, checkout_date, destination)
