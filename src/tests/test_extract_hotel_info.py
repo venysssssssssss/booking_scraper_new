@@ -1,84 +1,93 @@
-from src.scrapy.extract_hotel_info import extract_hotel_info
+from selenium.webdriver.common.by import By
+from unittest.mock import Mock
 
-
-def test_extract_hotel_info_with_price(self):
-    # Create a mock hotel element with price data
-    class MockHotelElement:
-        def find_element(self, *args):
-            return MockElement()
-
-    class MockElement:
-        def get_attribute(self, attr):
-            if attr == 'innerText':
-                if args[0] == 'price':
-                    return '$100'
-                return 'Hotel Name'
-            return None
-
-    hotel = MockHotelElement()
-    expected_result = {
-        'hotel': 'Hotel Name',
+def test_extract_hotel_info():
+    # Positive case 1: All elements present
+    hotel_element_1 = create_hotel_element(
+        title='Hotel A',
+        price='$100',
+        score='8.5',
+        avg_review='Good',
+        reviews_count='100 reviews'
+    )
+    expected_result_1 = {
+        'hotel': 'Hotel A',
         'price': '$100',
-        'score': None,
-        'avg review': None,
-        'reviews count': None,
-    }
-
-    result = extract_hotel_info(hotel)
-    self.assertEqual(result, expected_result)
-
-
-def test_extract_hotel_info_with_score_and_reviews(self):
-    # Create a mock hotel element with score and reviews data
-    class MockHotelElement:
-        def find_element(self, *args):
-            return MockElement()
-
-    class MockElement:
-        def get_attribute(self, attr):
-            if attr == 'innerText':
-                if args[0] == 'score':
-                    return '8.5'
-                elif args[0] == 'reviews':
-                    return '1000 reviews'
-                return 'Hotel Name'
-            return None
-
-    hotel = MockHotelElement()
-    expected_result = {
-        'hotel': 'Hotel Name',
-        'price': None,
         'score': '8.5',
-        'avg review': None,
-        'reviews count': '1000 reviews',
+        'avg review': 'Good',
+        'reviews count': '100'
     }
+    assert extract_hotel_info(hotel_element_1) == expected_result_1
 
-    result = extract_hotel_info(hotel)
-    self.assertEqual(result, expected_result)
+    # Positive case 2: Some elements missing
+    hotel_element_2 = create_hotel_element(
+        title='Hotel B',
+        price=None,
+        score='9.0',
+        avg_review=None,
+        reviews_count='50 reviews'
+    )
+    expected_result_2 = {
+        'hotel': 'Hotel B',
+        'price': None,
+        'score': '9.0',
+        'avg review': None,
+        'reviews count': '50'
+    }
+    assert extract_hotel_info(hotel_element_2) == expected_result_2
 
+    # Positive case 3: All elements missing
+    def extract_hotel_info(hotel_element):
+        # Extract hotel information from the hotel element
+        # Implementation goes here
+        pass
 
-def test_extract_hotel_info_with_avg_review(self):
-    # Create a mock hotel element with average review data
-    class MockHotelElement:
-        def find_element(self, *args):
-            return MockElement()
-
-    class MockElement:
-        def get_attribute(self, attr):
-            if attr == 'innerText':
-                if args[0] == 'avg_review':
-                    return '4.2'
-                return 'Hotel Name'
-            return None
-
-    hotel = MockHotelElement()
-    expected_result = {
-        'hotel': 'Hotel Name',
+    hotel_element_3 = create_hotel_element(
+        title=None,
+        price=None,
+        score=None,
+        avg_review=None,
+        reviews_count=None
+    )
+    expected_result_3 = {
+        'hotel': None,
         'price': None,
         'score': None,
-        'avg review': '4.2',
-        'reviews count': None,
+        'avg review': None,
+        'reviews count': None
     }
+    assert extract_hotel_info(hotel_element_3) == expected_result_3
 
-    result = extract_hotel_info(hotel)
-    self.assertEqual(result, expected_result)
+def create_hotel_element(title, price, score, avg_review, reviews_count):
+    # Create a mock hotel element with specified attributes
+    hotel_element = Mock()
+    hotel_element.find_element = Mock(side_effect=find_element_mock)
+    hotel_element.get_attribute = Mock(side_effect=get_attribute_mock)
+    hotel_element.title = title
+    hotel_element.price = price
+    hotel_element.score = score
+    hotel_element.avg_review = avg_review
+    hotel_element.reviews_count = reviews_count
+    return hotel_element
+
+def find_element_mock(by, xpath):
+    # Mock implementation of find_element method
+    if xpath == './/div[@data-testid="title"]':
+        return Mock()
+    elif xpath == './/span[@data-testid="price-and-discounted-price"]':
+        return Mock()
+    elif xpath == './/div[@data-testid="review-score"]/div[1]':
+        return Mock()
+    elif xpath == './/div[@data-testid="review-score"]/div[2]/div[1]':
+        return Mock()
+    elif xpath == './/div[@data-testid="review-score"]/div[2]/div[2]':
+        return Mock()
+    else:
+        return None
+
+def get_attribute_mock(attribute):
+    # Mock implementation of get_attribute method
+    if attribute == 'innerText':
+        return Mock()
+    else:
+        return None
