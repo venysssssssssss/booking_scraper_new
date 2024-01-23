@@ -28,4 +28,8 @@ nav:
   - Documentation:
     - 'Introduction': index.md
     - 'Usage': usage.md
+    - 'Scrapy': webscrapy.md
+    - 'ETL': etl.md
+    - 'AI': ai_models.md
+    - 'Tests': tests.md
   - Contact: contact.md

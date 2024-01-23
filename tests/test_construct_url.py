@@ -2,6 +2,10 @@ from src.scrapy.construct_url import construct_url
 
 
 def test_construct_url():
+    """
+    Test the construct_url function with different test cases.
+    """
+
     # Test case 1: Check-in date, check-out date, and destination are valid
     checkin_date = '2022-01-01'
     checkout_date = '2022-01-02'

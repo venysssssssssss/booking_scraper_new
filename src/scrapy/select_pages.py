@@ -106,3 +106,5 @@ def scrape_pages(driver):
 
     if not save_per_page:
         save_hotel_info(all_hotels_list, 'hotels_all_pages', save_per_page)
+
+

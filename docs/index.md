@@ -1,17 +1,23 @@
-# Welcome to MkDocs
+# Bem vindo a documentação do booking_scraper
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands
+## Tecnologias
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+* `pyenv` - Controlar versões Python.
+* `poetry` - Gerenciamento de pacotes e ambiente virtual.
+* `pandas` - Manipulação de dados.
+* `scikit-learn` - Construção de modelos.
+* `selenium` - Automação web/raspagem de dados.
+* `pytest` - Testes unitários e integrados.
+* `selenium` - Automação web/raspagem de dados.
+* `mkdocs` - Documentação do projeto.
+* `git/github` - Versionamento de código e deploy da documentação.
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
+
+## Layout do projeto
+
+    mkdocs.yml    # Arquivo de configuração.
     docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+        index.md  # Página principal da documentação.
+        usage.md       # Uso de algumas tecnologias.
