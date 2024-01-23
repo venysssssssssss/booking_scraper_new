@@ -1,0 +1,1067 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../usage/">
+      
+      
+        <link rel="next" href="../etl/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+    
+    
+      
+        <title>Scrapy - Documentação booking_scraper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documentacao-de-web-scraping" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Documentação booking_scraper" class="md-header__button md-logo" aria-label="Documentação booking_scraper" data-md-component="logo">
+      
+  <img src="../{'icon': 'path/to/your/logo.png'}" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentação booking_scraper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scrapy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentação booking_scraper" class="md-nav__button md-logo" aria-label="Documentação booking_scraper" data-md-component="logo">
+      
+  <img src="../{'icon': 'path/to/your/logo.png'}" alt="logo">
+
+    </a>
+    Documentação booking_scraper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Scrapy
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Scrapy
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tabela-de-conteudos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabela de Conteúdos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introdução 
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pré-requisitos 
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Instalação 
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tabela-de-conteudos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabela de Conteúdos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introdução 
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pré-requisitos 
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Instalação 
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="documentacao-de-web-scraping">Documentação de Web Scraping</h1>
+<p>Esta documentação fornece uma visão geral de um script modularizado de web scraping para extrair informações de hotéis do Booking.com. O script está dividido em vários arquivos, cada um com um propósito específico. Os módulos incluem funções para inicializar o WebDriver, construir URLs, clicar em botões, extrair informações de hotéis, salvar dados em arquivos e fazer scraping de várias páginas.</p>
+<h2 id="tabela-de-conteudos">Tabela de Conteúdos</h2>
+<ul>
+<li><a href="#introdução">Introdução</a></li>
+<li><a href="#configuração">Configuração</a></li>
+<li><a href="#pré-requisitos">Pré-requisitos</a></li>
+<li><a href="#instalação">Instalação</a></li>
+<li><a href="#detalhes-dos-módulos">Detalhes dos Módulos</a></li>
+<li><a href="#click_button"> <code>click_button</code></a></li>
+<li><a href="#close_popup"> <code>close_popup</code></a></li>
+<li><a href="#construct_url"> <code>construct_url</code></a></li>
+<li><a href="#extract_hotel_info"> <code>extract_hotel_info</code></a></li>
+<li><a href="#get_hotels"> <code>get_hotels</code></a></li>
+<li><a href="#init_driver-e-init_service"> <code>init_driver</code> e <code>init_service</code></a></li>
+<li><a href="#main"> <code>main</code></a></li>
+<li><a href="#save_hotel_info"> <code>save_hotel_info</code></a></li>
+<li><a href="#scrape_pages"> <code>scrape_pages</code></a></li>
+</ul>
+<h2 id="1-introducao">1. Introdução <a name="introdução"></a></h2>
+<p>Este script de web scraping foi projetado para extrair informações de hotéis do Booking.com, oferecendo uma estrutura modular e fácil de manter. Ele utiliza o Selenium WebDriver para navegar pelo site, interagir com elementos e extrair dados.</p>
+<h3 id="2-pre-requisitos">2. Pré-requisitos <a name="pré-requisitos"></a></h3>
+<ul>
+<li>Python 3.11.3</li>
+<li>Selenium</li>
+<li>pandas</li>
+</ul>
+<h3 id="3-instalacao">3. Instalação <a name="instalação"></a></h3>
+<p>Instale os pacotes necessários usando os seguintes comandos:</p>
+<p><code>poetry install</code></p>
+<h1 id="documentacao-da-funcao-click_button">Documentação da Função <code>click_button</code> <a name="click_button"></a></h1>
+<h2 id="descricao">Descrição</h2>
+<p>A função <code>click_button</code> é utilizada para clicar em um botão em uma página da web, fazendo uso do driver fornecido.</p>
+<h2 id="parametros">Parâmetros</h2>
+<ul>
+<li><code>driver</code>: A instância do WebDriver utilizada para interagir com a página da web.</li>
+</ul>
+<h2 id="excecoes">Exceções</h2>
+<p>A função pode gerar uma exceção do tipo <code>Exception</code> caso ocorra um erro durante o processo de clicar no botão.</p>
+<h2 id="codigo">Código</h2>
+<p>Aqui está o código-fonte da função <code>click_button</code>:</p>
+<p>```python
+def click_button(driver):
+    """
+    Clica em um botão em uma página da web.</p>
+<pre><code>:param driver: A instância do WebDriver utilizada para interagir com a página da web.
+:type driver: WebDriver
+
+:raises Exception: Se ocorrer um erro ao clicar no botão.
+"""
+try:
+    # Substitua esta linha pelo código específico para localizar e clicar no botão
+except Exception as e:
+    raise Exception("Erro ao clicar no botão: {}".format(str(e)))
+</code></pre>
+<h1 id="documentacao-da-funcao-close_popup">Documentação da Função <code>close_popup</code> <a name="close_popup"></a></h1>
+<h2 id="descricao_1">Descrição</h2>
+<p>A função <code>close_popup</code> é utilizada para fechar uma janela de pop-up clicando na tela.</p>
+<h2 id="parametros_1">Parâmetros</h2>
+<ul>
+<li><code>driver</code>: A instância do WebDriver utilizada para interagir com a página da web.</li>
+</ul>
+<h2 id="excecoes_1">Exceções</h2>
+<p>A função pode gerar uma exceção do tipo <code>Exception</code> caso ocorra um erro durante o processo de fechamento do pop-up.</p>
+<h2 id="codigo_1">Código</h2>
+<p>Aqui está o código-fonte da função <code>close_popup</code>:</p>
+<p>```python
+def close_popup(driver):
+    """
+    Fecha a janela de pop-up clicando na tela.</p>
+<pre><code>:param driver: A instância do WebDriver utilizada para interagir com a página da web.
+:type driver: WebDriver
+
+:raises Exception: Se ocorrer um erro ao fechar o pop-up.
+"""
+try:
+    wait = WebDriverWait(driver, 15)
+    element_present = wait.until(
+        EC.presence_of_element_located(
+            (
+                By.XPATH,
+                '//*[@id="b2searchresultsPage"]/div[49]/div/div/div',
+            )
+        )
+    )
+    click_button = wait.until(
+        EC.element_to_be_clickable(
+            (
+                By.XPATH,
+                '//*[@id="b2searchresultsPage"]/div[48]/div/div/div/div[1]/div[1]/div/button',
+            )
+        )
+    )
+    if element_present and click_button:
+        time.sleep(2)  # Aguarda por 2 segundos antes de clicar
+        click_button.click()
+        wait.until_not(
+            EC.presence_of_element_located(
+                (
+                    By.XPATH,
+                    '//*[@id="b2searchresultsPage"]/div[49]/div/div/div',
+                )
+            )
+        )
+except Exception as e:
+    print(f'Um erro ocorreu ao fechar o pop-up: {str(e)}')
+</code></pre>
+<h1 id="documentacao-da-funcao-construct_url">Documentação da Função <code>construct_url</code> <a name="construct_url"></a></h1>
+<h2 id="descricao_2">Descrição</h2>
+<p>A função <code>construct_url</code> constrói uma URL para os resultados de busca do Booking.com com base nas informações fornecidas.</p>
+<h2 id="parametros_2">Parâmetros</h2>
+<ul>
+<li><code>checkin_date</code> (str): A data de check-in no formato 'AAAA-MM-DD'.</li>
+<li><code>checkout_date</code> (str): A data de check-out no formato 'AAAA-MM-DD'.</li>
+<li><code>destination</code> (str): A cidade de destino para a pesquisa.</li>
+<li><code>adults</code> (int): O número de adultos.</li>
+<li><code>rooms</code> (int): O número de quartos.</li>
+<li><code>children</code> (int): O número de crianças.</li>
+<li><code>currency</code> (str): A moeda desejada.</li>
+</ul>
+<h2 id="retorno">Retorno</h2>
+<ul>
+<li><code>str</code>: A URL construída.</li>
+</ul>
+<h2 id="excecoes_2">Exceções</h2>
+<p>A função pode gerar uma exceção do tipo <code>Exception</code> se ocorrer um erro durante a construção da URL.</p>
+<h2 id="codigo_2">Código</h2>
+<p>Aqui está o código-fonte da função <code>construct_url</code>:</p>
+<p>```python
+def construct_url(
+    checkin_date, checkout_date, destination, adults, rooms, children, currency
+):
+    """
+    Constrói uma URL para os resultados de busca do Booking.com com base nas informações fornecidas.</p>
+<pre><code>:param checkin_date: A data de check-in no formato 'AAAA-MM-DD'.
+:type checkin_date: str
+:param checkout_date: A data de check-out no formato 'AAAA-MM-DD'.
+:type checkout_date: str
+:param destination: A cidade de destino para a pesquisa.
+:type destination: str
+:param adults: O número de adultos.
+:type adults: int
+:param rooms: O número de quartos.
+:type rooms: int
+:param children: O número de crianças.
+:type children: int
+:param currency: A moeda desejada.
+:type currency: str
+
+:return: A URL construída.
+:rtype: str
+
+:raises Exception: Se ocorrer um erro durante a construção da URL.
+"""
+try:
+    url = f'https://www.booking.com/searchresults.en-us.html?checkin={checkin_date}&amp;checkout={checkout_date}&amp;selected_currency={currency}&amp;ss={destination}&amp;ssne={destination}&amp;ssne_untouched={destination}&amp;lang=en-us&amp;sb=1&amp;src_elem=sb&amp;src=searchresults&amp;dest_type=city&amp;group_adults={adults}&amp;no_rooms={rooms}&amp;group_children={children}&amp;sb_travel_purpose=leisure'
+    return url
+except Exception as e:
+    print(f'Um erro ocorreu: {e}')
+</code></pre>
+<h1 id="documentacao-da-funcao-extract_hotel_info">Documentação da Função <code>extract_hotel_info</code> <a name="extract_hotel_info"></a></h1>
+<h2 id="descricao_3">Descrição</h2>
+<p>A função <code>extract_hotel_info</code> extrai informações de um elemento de hotel e retorna um dicionário.</p>
+<h2 id="parametros_3">Parâmetros</h2>
+<ul>
+<li><code>hotel</code>: O elemento do hotel a partir do qual extrair informações.</li>
+</ul>
+<h2 id="retorno_1">Retorno</h2>
+<ul>
+<li><code>dict</code>: Um dicionário contendo as informações extraídas. As chaves são 'hotel', 'price', 'score', 'avg review' e 'reviews count'. Os valores são os valores correspondentes extraídos do elemento do hotel.</li>
+</ul>
+<h2 id="codigo_3">Código</h2>
+<p>Aqui está o código-fonte da função <code>extract_hotel_info</code>:</p>
+<p>```python
+def extract_hotel_info(hotel):
+    """
+    Extrai informações de um elemento de hotel e retorna um dicionário.</p>
+<pre><code>:param hotel: O elemento do hotel a partir do qual extrair informações.
+
+:return: Um dicionário contendo as informações extraídas. As chaves são 'hotel', 'price', 'score', 'avg review' e 'reviews count'. Os valores são os valores correspondentes extraídos do elemento do hotel.
+:rtype: dict
+"""
+hotel_dict = {}
+try:
+    title_element = hotel.find_element(
+        By.XPATH, './/div[@data-testid="title"]'
+    )
+    hotel_dict['hotel'] = (
+        title_element.get_attribute('innerText') if title_element else None
+    )
+except:
+    hotel_dict['hotel'] = None
+try:
+    price_element = hotel.find_element(
+        By.XPATH, './/span[@data-testid="price-and-discounted-price"]'
+    )
+    hotel_dict['price'] = (
+        price_element.get_attribute('innerText') if price_element else None
+    )
+except:
+    hotel_dict['price'] = None
+try:
+    score_element = hotel.find_element(
+        By.XPATH, './/div[@data-testid="review-score"]/div[1]'
+    )
+    hotel_dict['score'] = (
+        score_element.get_attribute('innerText') if score_element else None
+    )
+except:
+    hotel_dict['score'] = None
+try:
+    avg_review_element = hotel.find_element(
+        By.XPATH, './/div[@data-testid="review-score"]/div[2]/div[1]'
+    )
+    hotel_dict['avg review'] = (
+        avg_review_element.get_attribute('innerText')
+        if avg_review_element
+        else None
+    )
+except:
+    hotel_dict['avg review'] = None
+try:
+    reviews_count_element = hotel.find_element(
+        By.XPATH, './/div[@data-testid="review-score"]/div[2]/div[2]'
+    )
+    hotel_dict['reviews count'] = (
+        reviews_count_element.get_attribute('innerText').split()[0]
+        if reviews_count_element
+        else None
+    )
+except:
+    hotel_dict['reviews count'] = None
+return hotel_dict
+</code></pre>
+<h1 id="documentacao-da-funcao-get_hotels">Documentação da Função <code>get_hotels</code> <a name="get_hotels"></a></h1>
+<h2 id="descricao_4">Descrição</h2>
+<p>A função <code>get_hotels</code> obtém uma lista de hotéis do driver fornecido.</p>
+<h2 id="parametros_4">Parâmetros</h2>
+<ul>
+<li><code>driver</code>: A instância do WebDriver.</li>
+</ul>
+<h2 id="retorno_2">Retorno</h2>
+<ul>
+<li><code>list</code>: Uma lista de objetos WebElement representando os hotéis.</li>
+</ul>
+<h2 id="codigo_4">Código</h2>
+<p>Aqui está o código-fonte da função <code>get_hotels</code>:</p>
+<p>```python
+def get_hotels(driver):
+    """
+    Obtém uma lista de hotéis do driver fornecido.</p>
+<pre><code>:param driver: A instância do WebDriver.
+
+:return: Uma lista de objetos WebElement representando os hotéis.
+:rtype: list
+"""
+WebDriverWait(driver, 30).until(
+    EC.presence_of_all_elements_located(
+        (By.XPATH, './/div[@data-testid="property-card"]')
+    )
+)
+return driver.find_elements(
+    By.XPATH, './/div[@data-testid="property-card"]'
+)
+</code></pre>
+<h1 id="documentacao-da-funcao-init_driver">Documentação da Função <code>init_driver</code> <a name="init_driver"></a></h1>
+<h2 id="descricao_5">Descrição</h2>
+<p>A função <code>init_driver</code> inicializa e retorna uma instância do WebDriver para o navegador Edge.</p>
+<h2 id="retorno_3">Retorno</h2>
+<ul>
+<li><code>WebDriver</code>: Uma instância do WebDriver para o navegador Edge.</li>
+</ul>
+<h2 id="codigo_5">Código</h2>
+<p>Aqui está o código-fonte da função <code>init_driver</code>:</p>
+<p>```python
+def init_driver():
+    """
+    Inicializa e retorna uma instância do WebDriver para o navegador Edge.</p>
+<pre><code>:return: Uma instância do WebDriver para o navegador Edge.
+:rtype: WebDriver
+"""
+service = init_service()
+return webdriver.Edge(service=service)
+</code></pre>
+<h1 id="documentacao-da-funcao-init_service">Documentação da Função <code>init_service</code> <a name="init_service"></a></h1>
+<h2 id="descricao_6">Descrição</h2>
+<p>A função <code>init_service</code> inicializa e retorna um objeto Service para o WebDriver do Microsoft Edge.</p>
+<h2 id="retorno_4">Retorno</h2>
+<ul>
+<li><code>Service</code>: Um objeto Service para o WebDriver do Microsoft Edge.</li>
+</ul>
+<h2 id="codigo_6">Código</h2>
+<p>Aqui está o código-fonte da função <code>init_service</code>:</p>
+<p>```python
+def init_service():
+    """
+    Inicializa e retorna um objeto Service para o WebDriver do Microsoft Edge.</p>
+<pre><code>:return: Um objeto Service para o WebDriver do Microsoft Edge.
+:rtype: Service
+"""
+return Service(
+    r'C:\\Users\\truks\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\msedgedriver.exe'
+)
+</code></pre>
+<h1 id="documentacao-da-funcao-main">Documentação da Função <code>main</code> <a name="main"></a></h1>
+<h2 id="descricao_7">Descrição</h2>
+<p>A função <code>main</code> é a função principal para extrair informações de hotéis.</p>
+<h2 id="parametros_5">Parâmetros</h2>
+<ul>
+<li><code>checkin_date</code> (str): A data de check-in no formato 'AAAA-MM-DD'.</li>
+<li><code>checkout_date</code> (str): A data de check-out no formato 'AAAA-MM-DD'.</li>
+<li><code>destination</code> (str): A cidade de destino.</li>
+<li><code>adults</code> (int): O número de adultos.</li>
+<li><code>rooms</code> (int): O número de quartos.</li>
+<li><code>children</code> (int): O número de crianças.</li>
+<li><code>currency</code> (str): A moeda desejada.</li>
+</ul>
+<h2 id="codigo_7">Código</h2>
+<p>Aqui está o código-fonte da função <code>main</code>:</p>
+<p>```python
+def main(checkin_date, checkout_date, destination):
+    """
+    Função principal para extrair informações de hotéis.</p>
+<pre><code>:param checkin_date: A data de check-in no formato 'AAAA-MM-DD'.
+:type checkin_date: str
+:param checkout_date: A data de check-out no formato 'AAAA-MM-DD'.
+:type checkout_date: str
+:param destination: A cidade de destino.
+:type destination: str
+
+:return: None
+"""
+service = init_service()
+driver = webdriver.Edge(service=service)
+
+url = construct_url(
+    checkin_date,
+    checkout_date,
+    destination,
+    adults,
+    rooms,
+    children,
+    currency,
+)
+
+driver.get(url)
+
+close_popup(driver)
+
+scrape_pages(driver)
+
+driver.quit()
+</code></pre>
+<p>if <strong>name</strong> == '<strong>main</strong>':
+    checkin_date = '2024-02-15'
+    checkout_date = '2024-2-30'
+    destination = 'Rio de Janeiro'
+    adults = 1
+    rooms = 1
+    children = 0
+    currency = 'USD'
+    main(checkin_date, checkout_date, destination)</p>
+<h1 id="documentacao-da-funcao-save_hotel_info">Documentação da Função <code>save_hotel_info</code> <a name="save_hotel_info"></a></h1>
+<h2 id="descricao_8">Descrição</h2>
+<p>A função <code>save_hotel_info</code> salva as informações do hotel em arquivos Excel e CSV.</p>
+<h2 id="parametros_6">Parâmetros</h2>
+<ul>
+<li><code>hotels_list</code> (list): Uma lista de dicionários contendo informações do hotel.</li>
+<li><code>filename</code> (str): O nome base do arquivo a ser usado para os arquivos de saída.</li>
+<li><code>save_per_page</code> (bool): Se salvar cada página em um arquivo separado.</li>
+</ul>
+<h2 id="codigo_8">Código</h2>
+<p>Aqui está o código-fonte da função <code>save_hotel_info</code>:</p>
+<p>```python
+def save_hotel_info(hotels_list, filename, save_per_page):
+    """
+    Salva as informações do hotel em arquivos Excel e CSV.</p>
+<pre><code>:param hotels_list: Uma lista de dicionários contendo informações do hotel.
+:type hotels_list: list
+:param filename: O nome base do arquivo a ser usado para os arquivos de saída.
+:type filename: str
+:param save_per_page: Se salvar cada página em um arquivo separado.
+:type save_per_page: bool
+
+:return: None
+"""
+try:
+    df = pd.DataFrame(hotels_list)
+    out_dir = 'data/out'
+    os.makedirs(out_dir, exist_ok=True)
+    if save_per_page:
+        excel_file = os.path.join(
+            out_dir, 'all_hotels_splitted_files', f'{filename}.xlsx'
+        )
+    else:
+        excel_file = os.path.join(
+            out_dir, 'all_hotels_files', 'all_hotels.xlsx'
+        )
+        csv_file = os.path.join(
+            out_dir, 'all_hotels_files', 'all_hotels.csv'
+        )
+    df.to_excel(excel_file, index=False)
+    if not save_per_page:
+        df.to_csv(csv_file, index=False)
+    print(f'There are: {len(hotels_list)} hotels.')
+except Exception as e:
+    print(f'An error occurred: {str(e)}')
+</code></pre>
+<h1 id="documentacao-da-funcao-scrape_pages">Documentação da Função <code>scrape_pages</code></h1>
+<h2 id="descricao_9">Descrição</h2>
+<p>A função <code>scrape_pages</code> é responsável por extrair informações de múltiplas páginas de hotéis em um site usando Selenium WebDriver.</p>
+<h2 id="parametros_7">Parâmetros</h2>
+<ul>
+<li><code>driver</code>: Uma instância do Selenium WebDriver utilizada para interagir com a página da web.</li>
+</ul>
+<h2 id="retorno_5">Retorno</h2>
+<p>A função não possui um retorno explícito. Ela realiza a extração de informações de hotéis e, opcionalmente, salva os resultados em arquivos.</p>
+<h2 id="funcionamento">Funcionamento</h2>
+<ol>
+<li>
+<p><strong>Inicialização</strong>: A função inicializa uma lista vazia chamada <code>all_hotels_list</code> para armazenar as informações dos hotéis.</p>
+</li>
+<li>
+<p><strong>Obtenção do Número de Páginas</strong>: Utilizando Selenium, a função identifica o número total de páginas disponíveis para extração, com base nos elementos da barra de navegação.</p>
+</li>
+<li>
+<p><strong>Input do Usuário</strong>: Solicita ao usuário que informe o número desejado de páginas a serem extraídas e se deseja salvar cada página em um arquivo separado ou todas as páginas em um único arquivo.</p>
+</li>
+<li>
+<p><strong>Loop de Extração por Página</strong>: Itera sobre o número de páginas fornecido pelo usuário.</p>
+<p>a. <strong>Extração de Hotéis</strong>: Utiliza a função <code>get_hotels</code> para obter a lista de hotéis da página atual.</p>
+<p>b. <strong>Extração de Informações</strong>: Utiliza a função <code>extract_hotel_info</code> para obter as informações de cada hotel na página.</p>
+<p>c. <strong>Acumulação de Dados</strong>: Adiciona as informações dos hotéis à lista <code>all_hotels_list</code>.</p>
+<p>d. <strong>Salvamento Opcional por Página</strong>: Se o usuário optou por salvar cada página separadamente, utiliza a função <code>save_hotel_info</code> para salvar as informações dos hotéis da página atual em um arquivo.</p>
+<p>e. <strong>Navegação para a Próxima Página</strong>: Se ainda houver páginas a serem extraídas, clica no botão da próxima página e aguarda uma mudança na URL para garantir que a página foi carregada completamente.</p>
+</li>
+<li>
+<p><strong>Salvamento Final</strong>: Se o usuário optou por salvar todas as páginas em um único arquivo, utiliza a função <code>save_hotel_info</code> para salvar todas as informações dos hotéis em um arquivo.</p>
+</li>
+</ol>
+<h2 id="excecoes_3">Exceções</h2>
+<ul>
+<li>Em caso de erro durante o processo de extração de informações de uma página, a exceção é capturada e uma mensagem é exibida indicando a ocorrência do erro.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      
+    
+  </body>
+</html>
